@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 
 @Getter
 @Setter
@@ -12,7 +11,6 @@ import org.springframework.data.annotation.Id;
 @AllArgsConstructor
 public class Product {
 
-    @Id
     private int id;
     private String name;
 

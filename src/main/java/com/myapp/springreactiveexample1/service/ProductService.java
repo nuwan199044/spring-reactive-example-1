@@ -1,22 +1,20 @@
 package com.myapp.springreactiveexample1.service;
 
 import com.myapp.springreactiveexample1.entity.Product;
-import com.myapp.springreactiveexample1.repository.ProductRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
 import java.time.Duration;
+import java.util.stream.Stream;
 
 @Service
-@RequiredArgsConstructor
 public class ProductService {
 
-    private final ProductRepository productRepository;
-
-    public Flux<Product> getProducts() {
-        return productRepository.findAll()
-                .delayElements(Duration.ofSeconds(5));
+    public Flux<Product> getAll() {
+        var p1 = new Product(1, "Beer");
+        var p2 = new Product(2, "Chocolate");
+        return Flux.fromStream(Stream.of(p1, p2))
+                .delayElements(Duration.ofSeconds(3));
     }
 
 }
